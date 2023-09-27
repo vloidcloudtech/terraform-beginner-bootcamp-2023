@@ -17,3 +17,20 @@ The general format:
 The Terrafrom CLi installation instructions have changed due to gpg 
 keyring changes. SO we needed to refer to the latest install CLI instructions via Terraform Documentation and change the scripting for install
 [Install Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+
+
+### AWS CLI INSTALLATION
+aws cli is installed for this project via the bash script ['./bin/install_aws_cli'](./bin/install_aws_cli)
+
+We can check if the aws credentials are configured correctly by ruinning this command
+'aws sts get-caller-indentity'
+
+if it is succesfull you should see a json payload
+
+''json
+
+{
+    "UserId": "AIDA5684dfke6FW6J4F4YJ",
+    "Account": "454851640124",
+    "Arn": "arn:aws:iam::1236549875:user/terraform-beginner-bootcamp"
+}
