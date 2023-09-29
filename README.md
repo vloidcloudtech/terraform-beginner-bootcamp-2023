@@ -34,3 +34,12 @@ if it is succesfull you should see a json payload
     "Account": "454851640124",
     "Arn": "arn:aws:iam::1236549875:user/terraform-beginner-bootcamp"
 }
+
+# Terraform basics
+
+### Terraform Registry
+
+Terrafrom sources their proividers and modules from [terraform.io] (https://registry.terraform.io/)
+-providers is an interface that will allow you to create resources in terraform
+-modules are a way to make large amounts of terraform code modular, portable, and sharable
+
