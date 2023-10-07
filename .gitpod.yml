@@ -12,6 +12,12 @@ tasks:
     before: |
       source ./bin/set_tf_alias
       source ./bin/install_aws_cli
+  - name: http-server
+    before: |
+      cd $PROJECT_ROOT
+      npm install --global http-server
+    command: 
+      http-server
 
 vscode:
   extensions:
