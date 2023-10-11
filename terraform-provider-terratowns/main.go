@@ -4,6 +4,7 @@ package main
 
 // fmt is short format, it contains functions for formatted I/O.
 import (
+
 	//"bytes"
 	"context"
 	//"encoding/json"
@@ -12,6 +13,7 @@ import (
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 )
@@ -21,6 +23,10 @@ func main() {
 	plugin.Serve(&plugin.ServeOpts{
 		ProviderFunc: Provider,
 	})
+	
+	// Logging example
+	log.Println("Program started")
+
 	// Format.PrintLine
 	// Prints to standard output
 	fmt.Println("Hello, world!")
@@ -37,7 +43,7 @@ func Provider() *schema.Provider {
 	var p *schema.Provider
 	p = &schema.Provider{
 		ResourcesMap:  map[string]*schema.Resource{
-			"terratowns_home": Resource(),
+		
 		},
 		DataSourcesMap:  map[string]*schema.Resource{
 
@@ -58,7 +64,7 @@ func Provider() *schema.Provider {
 				Type: schema.TypeString,
 				Required: true,
 				Description: "UUID for configuration",
-				ValidateFunc: validateUUID,
+				//ValidateFunc: validateUUID,
 			},
 		},
 	}
