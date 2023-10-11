@@ -5,10 +5,10 @@ package main
 // fmt is short format, it contains functions for formatted I/O.
 import (
 
-	//"bytes"
+	"bytes"
 	"context"
-	//"encoding/json"
-	//"net/http"
+	"encoding/json"
+	"net/http"
 	"log"
 	"fmt"
 	"github.com/google/uuid"
@@ -43,7 +43,7 @@ func Provider() *schema.Provider {
 	var p *schema.Provider
 	p = &schema.Provider{
 		ResourcesMap:  map[string]*schema.Resource{
-		
+		   "terratowns_home": Resource(),
 		},
 		DataSourcesMap:  map[string]*schema.Resource{
 
