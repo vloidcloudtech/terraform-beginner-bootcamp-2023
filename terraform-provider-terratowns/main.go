@@ -13,7 +13,6 @@ import (
 	"fmt"
 	"github.com/google/uuid"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 )
@@ -68,7 +67,7 @@ func Provider() *schema.Provider {
 			},
 		},
 	}
-	//p.ConfigureContextFunc = providerConfigure(p)
+	p.ConfigureContextFunc = providerConfigure(p)
 	return p
 }
 func validateUUID(v interface{}, k string) (ws []string, errors []error) {
@@ -133,6 +132,7 @@ func Resource() *schema.Resource {
 }
 func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	log.Print("resourceHouseCreate:start")
+	defer log.Print("resourceHourseCreate:end")
 	var diags diag.Diagnostics
 
 	config := m.(*Config)
@@ -184,6 +184,8 @@ func resourceHouseCreate(ctx context.Context, d *schema.ResourceData, m interfac
 
 	homeUUID := responseData["uuid"].(string)
 	d.SetId(homeUUID)
+
+	log.Print("Home UUID:", homeUUID)
 
 	log.Print("resourceHouseCreate:end")
 
