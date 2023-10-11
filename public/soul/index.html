@@ -3,11 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <title>Image Gallery</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .gallery {
+            display: flex;
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+        .image.active {
+        border: 2px solid red; /* Add a border to the active image */
+    }
+    </style>
 </head>
 <body>
-    <h1>Music of the soul</h1>
-    <img src="/assets/EQLaurynHill.jpg" width="300px" />
-    <img src="/assets/soulchild.jpg" width="300px" />
-</body>
-</html>
+    <div class="gallery">
+        <div class="image" style="background-image: url('assets/image1.jpg');" data-audio="assets/audio1.mp3"></div>
+        <div class="image" style="background-image: url('assets/image2.jpg');" data-audio="assets/audio2.mp3"></div>
+        <div class="image" style="background-image: url('assets/image3.jpg');" data-audio="assets/audio3.mp3"></div>
+        <div class="image" style="background-image: url('assets/image4.jpg');" data-audio="assets/audio4.mp3"></div>
+        <div class="image" style="background-image: url('assets/image5.jpg');" data-audio="assets/audio5.mp3"></div>
+        <div class="image" style="background-image: url('assets/image6.jpg');" data-audio="assets/audio6.mp3"></div>
+        <div class="image" style="background-image: url('assets/image7.jpg');" data-audio="assets/audio7.mp3"></div>
+        <div class="image" style="background-image: url('assets/image8.jpg');" data-audio="assets/audio8.mp3"></div>
+        <div class="image" style="background-image: url('assets/image9.jpg');" data-audio="assets/audio9.mp3"></div>
+        <div class="image" style="background-image: url('assets/image10.jpg');" data-audio="assets/audio10.mp3"></div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.image');
+        let audio = new Audio();
+        let currentImage = null;
+    
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                if (currentImage === image) {
+                    audio.pause();
+                    currentImage = null;
+                } else {
+                    if (currentImage) {
+                        currentImage.classList.remove('active');
+                    }
+                    currentImage = image;
+                    audio.src = image.getAttribute('data-audio');
+                    audio.play();
+                    image.classList.add('active');
+                }
+            });
+        });
+    </script>
+    </body>
+    
+    </html>
