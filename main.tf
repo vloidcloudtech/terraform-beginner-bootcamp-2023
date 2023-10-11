@@ -31,7 +31,7 @@ This music is for the soul. My people have struggled to find peace in a country 
 so we decided to create music that will free our soul
 DESCRIPTION
  domain_name = module.home_soul_hosting.domain_name
-  town = "missingo"
+  town = "melomaniac-mansion"
   content_version = var.soul.content_version
 }
 module "home_kakashi_hosting" {
@@ -46,6 +46,7 @@ resource "terratowns_home" "home_kakashi" {
 Since I watch anime often, I can pull inspiration from characters
 DESCRIPTION
   domain_name = module.home_kakashi_hosting.domain_name
-  town = "missingo"
+  town = "video-valley"
+
   content_version = var.kakashi.content_version
 }
