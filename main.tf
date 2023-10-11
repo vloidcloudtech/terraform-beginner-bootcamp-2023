@@ -27,3 +27,14 @@ provider "terratowns" {
 #  content_version = var.content_version
 #  assets_path = var.assets_path
 #}
+
+resource "terratowns_home" "home" {
+  name = "Music for the soul"
+  description = <<DESCRIPTION
+This music is for the soul. My people have struggled to find peace in a country that we built 
+so we decided to create music that will free our soul
+DESCRIPTION
+  domain_name ="5344.cloudfront.net"
+  town = "SoulTown"
+  content_version = 1
+}
