@@ -33,7 +33,7 @@ resource "terratowns_home" "home" {
 This music is for the soul. My people have struggled to find peace in a country that we built 
 so we decided to create music that will free our soul
 DESCRIPTION
-  domain_name = module.terrahouse_aws.cloudfront_url
+ domain_name = module.terrahouse_aws.cloudfront_url
   town = "missingo"
   content_version = 1
 }
