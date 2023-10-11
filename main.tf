@@ -5,35 +5,47 @@ terraform {
       version = "1.0.0"
     }
   }
-#cloud{
-#  organization = "vloid"
-#
-# workspaces {
-#    name = "terra-house-1"
-#  }
-#}
+cloud{
+  organization = "vloid"
+
+ workspaces {
+    name = "terra-house-1"
+  }
+}
 }
 provider "terratowns" {
   endpoint = var.terratowns_endpoint
   user_uuid= var.teacherseat_user_uuid
   token= var.terratowns_access_token
 }
-module "terrahouse_aws" {
-  source = "./modules/terrahouse_aws"
+module "home_soul_hosting" {
+  source = "./modules/terrahome_aws"
   user_uuid = var.teacherseat_user_uuid
-  bucket_name = var.bucket_name
-  index_html_filepath = var.index_html_filepath
-  error_html_filepath = var.error_html_filepath
-  content_version = var.content_version
-  assets_path = var.assets_path
+  public_path = var.soul.public_path
+  content_version = var.soul.content_version
 }
-resource "terratowns_home" "home" {
+resource "terratowns_home" "home_soul" {
   name = "Music for the soul"
   description = <<DESCRIPTION
 This music is for the soul. My people have struggled to find peace in a country that we built 
 so we decided to create music that will free our soul
 DESCRIPTION
- domain_name = module.terrahouse_aws.cloudfront_url
+ domain_name = module.home_soul_hosting.domain_name
   town = "missingo"
-  content_version = 1
+  content_version = var.soul.content_version
+}
+module "home_kakashi_hosting" {
+  source = "./modules/terrahome_aws"
+  user_uuid = var.teacherseat_user_uuid
+  public_path = var.kakashi.public_path
+  content_version = var.kakashi.content_version
+}
+resource "terratowns_home" "home_kakashi" {
+  name = "My favorite anime character"
+  description = <<DESCRIPTION
+Since I watch anime often, I can pull inspiration from characters
+DESCRIPTION
+  domain_name = module.home_kakashi_hosting.domain_name
+  town = "missingo"
+  content_version = var.kakashi.content_version
 }
