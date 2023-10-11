@@ -1,9 +1,9 @@
 terratowns_endpoint = "https://terratowns.cloud/api"
 soul = {
   public_path = "/workspace/terraform-beginner-bootcamp-2023/public/soul"
-  content_version = 11
+  content_version = 14
 }
 kakashi = {
   public_path = "/workspace/terraform-beginner-bootcamp-2023/public/kakashi"
-  content_version = 3 
+  content_version = 6
 }
